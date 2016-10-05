@@ -1,0 +1,4 @@
+files:
+  - 
+    source: '/docs/**/*.md'
+    translation: '/doc/translations/%locale%/%original_file_name%'
