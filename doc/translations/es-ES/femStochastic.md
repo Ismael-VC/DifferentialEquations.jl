@@ -1,12 +1,12 @@
-<a id='Stochastic-Finite-Element-Examples-1'></a>
-
 # Stochastic Finite Element Examples
 
-<a id='Finite-Element-Stochastic-Poisson-Equation-1'></a>
+For most problem types, we can additionally specify them as a stochastic problem by giving the appropriate optional arguments to the constructor. These arguments are a function σ which is the function multiplied to the Brownian increments dW, and stochstic, a boolean which we put as true for when the equation is stochastic. Another keyword that is optional is noiseType which specifies the type of noise (the "color" of the noise). By default this is Gaussian (Space-time) White Noise.
 
-### Finite Element Stochastic Poisson Equation
+The following examples show how to change the tutorial problems into stochastic problems.
 
-We can solve the same PDE as a stochastic PDE, -Δu=f+gdW, with additive space-time white noise by specifying the problem as:
+## Finite Element Stochastic Poisson Equation
+
+We can solve the same PDE as in the Poisson Tutorial execept as the stochastic PDE, -Δu=f+gdW, with additive space-time white noise by specifying the problem as:
 
 ```julia
 "Example problem with deterministic solution: u(x,y,t)= sin(2π.*x).*cos(2π.*y)/(8π*π)"
@@ -26,11 +26,9 @@ and using the same solving commands as shown in [femStochasticPoissonSolo.jl](/s
 
 <img src="/src/examples/introductionStochasticExample.png" width="750" align="middle" />
 
-<a id='Finite-Element-Stochastic-Heat-Equation-1'></a>
+## Finite Element Stochastic Heat Equation
 
-### Finite Element Stochastic Heat Equation
-
-The last equation we will solve in this introductory example will be a nonlinear stochastic heat equation u_t=Δu+f+gdW with forcing function `f(u)=.5-u`, noise function `g(u)=100u^2` and initial condition `u0=0`. We would expect this system to rise towards the deterministic steady state `u=2` (but stay in mean a bit below it due to 1st order "Milstein" effects), gaining more noise as it increases. This is specified as follows:
+This will solve a nonlinear stochastic heat equation u_t=Δu+f+gdW with forcing function `f(u)=.5-u`, noise function `g(u)=100u^2` and initial condition `u0=0`. We would expect this system to rise towards the deterministic steady state `u=2` (but stay in mean a bit below it due to 1st order "Milstein" effects), gaining more noise as it increases. This is specified as follows:
 
 ```julia
 "Example problem which starts with 0 and solves with f(u)=1-.1u"
